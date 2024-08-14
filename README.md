@@ -1,11 +1,4 @@
-# Tempreturebycity
-
+Prime Factorization Script
 Overview
-This Python script calculates and prints the average temperature, humidity, wind speed, and cloud cover for each city based on the provided weather data
-Write the Script on jupyter notebook or in any python editor.
-
-Prerequisites
-Python 3.x
-
-Save the Script
-Save the code provided into a file.
+This Python script contains a function to compute the prime factorization of an integer. The Factor function returns a list of tuples, where each tuple represents a prime factor and its corresponding exponent in the factorization.
+Run this script on any python editor with latest python version
