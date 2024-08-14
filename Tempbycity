@@ -1,0 +1,42 @@
+record = [
+    {"City": "Mumbai", "Temperature": 40, "Humidity": 34},
+    {"City": "Mumbai", "Temperature": 32, "Wind Speed": 55},
+    {"City": "New Delhi", "Temperature": 18, "Humidity": 30},
+    {"City": "New York", "Humidity": 50, "Cloud Cover": 85},
+    {"City": "New Delhi", "Wind Speed": 60, "Cloud Cover": 40},
+    {"City": "Nagpur", "Temperature": 16, "Humidity": 55, "Wind Speed": 40},
+    {"City": "Nagpur", "Cloud Cover": 67},
+    {"City": "Mumbai", "Temperature": 35, "Wind Speed": 45, "Cloud Cover": 70},
+    {"City": "New York", "Temperature": 22, "Humidity": 55, "Wind Speed": 20},
+    {"City": "Delhi", "Temperature": 21, "Humidity": 40, "Cloud Cover": 30},
+    {"City": "Bangalore", "Temperature": 25, "Humidity": 50, "Wind Speed": 15, "Cloud Cover": 20},
+    {"City": "Chennai", "Temperature": 30, "Humidity": 60, "Wind Speed": 25, "Cloud Cover": 10},
+]
+mh_data ={}
+for rec in record:
+    city_name = rec.get("City")
+    if city_name not in mh_data:
+        mh_data[city_name] = {"Temperature":[],"Humidity" :[], "Cloud Cover":[],"Wind Speed":[]}
+    if "Temperature" in rec:
+        mh_data[city_name]["Temperature"].append(rec["Temperature"])
+    if "Humidity" in rec:
+        mh_data[city_name]["Humidity"].append(rec["Humidity"])
+    if "Wind Speed" in rec:
+        mh_data[city_name]["Wind Speed"].append(rec["Wind Speed"])
+    if "Cloud Cover" in rec:
+        mh_data[city_name]["Cloud Cover"].append(rec["Cloud Cover"]) 
+        
+Avg_data ={}
+for c_data,avg in mh_data.items():
+    temperature_avg = sum(avg.get("Temperature", [])) / len(avg.get("Temperature", [])) if avg.get("Temperature") else 0
+    humidity_avg = sum(avg.get("Humidity", [])) / len(avg.get("Humidity", [])) if avg.get("Humidity") else 0
+    windspeed_avg = sum(avg.get("Wind Speed", [])) / len(avg.get("Wind Speed", [])) if avg.get("Wind Speed") else 0
+    cloudcover_avg = sum(avg.get("Cloud Cover", [])) / len(avg.get("Cloud Cover", [])) if avg.get("Cloud Cover") else 0
+    Avg_data[c_data] = {
+        "Temperature_avg": temperature_avg,
+        "Humidity_avg": humidity_avg,
+        "windspeed_avg": windspeed_avg,
+        "cloudcover_avg": cloudcover_avg
+    }     
+for key,values in Avg_data.items():
+    print(f"{key}: {values}")
